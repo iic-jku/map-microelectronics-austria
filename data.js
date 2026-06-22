@@ -76,6 +76,7 @@ window.COMPANIES = [
   { name: "Lam Research Austria (formerly SEZ, wet process)", city: "Villach", state: "Carinthia", lat: 46.6100, lon: 13.8700, category: "equipment", web: "https://www.lamresearch.com" },
   { name: "Semsysco (Lam Research, wet chemistry)", city: "Salzburg", state: "Salzburg", lat: 47.8095, lon: 13.0560, category: "equipment", web: "https://www.lamresearch.com" },
   { name: "BESI Austria (formerly Datacon, die attach/packaging)", city: "Radfeld", state: "Tyrol", lat: 47.4300, lon: 11.9100, category: "equipment", web: "https://www.besi.com" },
+  { name: "F&S BONDTEC Semiconductor (wire bonders & bond testers)", city: "Braunau am Inn", state: "Upper Austria", lat: 48.2585, lon: 13.0350, category: "equipment", web: "https://www.fsbondtec.at" },
 
   // ===================== MATERIALS =====================
   { name: "Plansee SE (refractory metals, sputter targets, EUV components)", city: "Reutte", state: "Tyrol", lat: 47.4900, lon: 10.7180, category: "material", web: "https://www.plansee.com" },
