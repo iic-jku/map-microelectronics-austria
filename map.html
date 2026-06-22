@@ -80,13 +80,15 @@
   const cityMarkers = {};
 
   function cityIcon(n) {
+    const s = Math.round(18 + Math.sqrt(n) * 7);
+    const fs = Math.round(s * 0.45);
     return L.divIcon({
       className: '',
-      html: `<div style="width:24px;height:24px;border-radius:50%;background:#1d3b57;
+      html: `<div style="width:${s}px;height:${s}px;border-radius:50%;background:#1d3b57;
                          border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.5);
-                         color:#fff;font-weight:700;font-size:11px;line-height:20px;
-                         text-align:center">${n}</div>`,
-      iconSize: [24,24], iconAnchor: [12,12], popupAnchor: [0,-12]
+                         color:#fff;font-weight:700;font-size:${fs}px;
+                         display:flex;align-items:center;justify-content:center">${n}</div>`,
+      iconSize: [s,s], iconAnchor: [s/2,s/2], popupAnchor: [0,-s/2]
     });
   }
 
