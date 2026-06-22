@@ -54,7 +54,7 @@ window.COMPANIES = [
   { name: "Infineon Technologies Austria (design center)", city: "Klagenfurt", state: "Carinthia", lat: 46.6230, lon: 14.3050, category: "design", web: "https://www.infineon.com/austria" },
   { name: "Infineon Technologies (design center)", city: "Linz", state: "Upper Austria", lat: 48.3069, lon: 14.2858, category: "design", web: "https://www.infineon.com/austria" },
   { name: "NXP Semiconductors Austria (security/RFID IC design)", city: "Gratkorn", state: "Styria", lat: 47.1233, lon: 15.3469, category: "design", web: "https://www.nxp.com" },
-  { name: "Apple (design center)", city: "Linz", state: "Upper Austria", lat: 48.3010, lon: 14.3050, category: "design", web: "https://www.apple.com", note: "Apple research subsidiary, 2019 from Intel's modem division" },
+  { name: "Apple (design center)", city: "Linz", state: "Upper Austria", lat: 48.3010, lon: 14.3050, category: "design", web: "https://www.apple.com" },
   { name: "Bridgecom Semiconductors (fabless, cellular IoT modems)", city: "Linz", state: "Upper Austria", lat: 48.3120, lon: 14.3030, category: "design", web: "https://www.bridgecom-semiconductors.com" },
   { name: "Intel Austria (analog/mixed-signal IP for 5G)", city: "Villach", state: "Carinthia", lat: 46.6300, lon: 13.8800, category: "design", web: "https://www.intel.com" },
   { name: "Qualcomm Austria RFFE (RF front-end development)", city: "Deutschlandsberg", state: "Styria", lat: 46.8150, lon: 15.2200, category: "design", web: "https://www.qualcomm.com" },
@@ -63,8 +63,8 @@ window.COMPANIES = [
   { name: "STMicroelectronics Austria (NFC/UWB Competence Center)", city: "Graz", state: "Styria", lat: 47.0455, lon: 15.4240, category: "design", web: "https://www.st.com" },
   { name: "CISC Semiconductor (RFID/NFC/RISC-V engineering)", city: "Klagenfurt", state: "Carinthia", lat: 46.6160, lon: 14.2650, category: "design", web: "https://www.cisc.at" },
   { name: "Bosch (Robert Bosch AG, automotive electronics development)", city: "Linz", state: "Upper Austria", lat: 48.2800, lon: 14.3200, category: "design", web: "https://www.bosch.at", note: "Electronics/software development; no chip manufacturing in AT" },
-  { name: "Broadcom", city: "Vienna", state: "Vienna", lat: 48.1820, lon: 16.3330, category: "design", web: "https://www.broadcom.com", note: "per slide; in AT only software/sales presence documented so far" },
-  { name: "Medtronic", city: "Innsbruck", state: "Tyrol", lat: 47.2692, lon: 11.4041, category: "design", web: "https://www.medtronic.com", note: "per slide; in AT mainly sales – microelectronics site unconfirmed" },
+  { name: "Broadcom", city: "Vienna", state: "Vienna", lat: 48.1820, lon: 16.3330, category: "design", web: "https://www.broadcom.com" },
+  { name: "Medtronic", city: "Innsbruck", state: "Tyrol", lat: 47.2692, lon: 11.4041, category: "design", web: "https://www.medtronic.com" },
 
   // ===================== COMPONENTS, SUBSTRATES, PACKAGING & EMS =====================
   { name: "AT&S Austria Technologie & Systemtechnik (IC substrates, HDI PCB)", city: "Leoben", state: "Styria", lat: 47.3830, lon: 15.0960, category: "components", web: "https://ats.net" },
