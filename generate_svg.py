@@ -42,11 +42,11 @@ GEOJSON_URLS = [
     "https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/austria-states.geojson",
 ]
 
-W, H = 2100, 1180          # SVG size
+W, H = 1720, 1188          # SVG size (A4 landscape ratio 297:210)
 MAP = (30, 95, 1180, 1130)  # map area (x0, y0, x1, y1)
-PANEL_X = 1215             # left edge of the legend list
-PANEL_COLS = 3            # columns of the location list
-PANEL_COL_W = 295         # column width
+PANEL_X = 1210             # left edge of the legend list
+PANEL_COLS = 1            # columns of the location list
+PANEL_COL_W = 500         # column width
 DOT_R = 6                  # point radius
 
 
@@ -233,6 +233,9 @@ def main():
         f'<text x="40" y="76" font-size="16" fill="#456">'
         f'Companies, research &amp; institutions · {len(companies)} location entries in '
         f'{len(cities)} cities</text>')
+    parts.append(
+        f'<text x="40" y="96" font-size="13" fill="#789">'
+        f'&#169; 2026 Harald Pretl, Johannes Kepler University, Linz, Austria</text>')
 
     # real geo positions + relaxed positions for the numbered markers
     geo_xy = []
@@ -268,18 +271,23 @@ def main():
             f'fill="#fff" text-anchor="middle">{n}</text></g>')
     parts.append("</g>")
 
-    # category legend (bottom left on the map)
-    leg_h = 22 * len(categories) + 16
+    # category legend (bottom left on the map) – three columns
+    cat_items = list(categories.items())
+    n_rows = (len(cat_items) + 2) // 3
+    leg_col_w = 340
+    leg_h = 22 * n_rows + 36
     parts.append(f'<g id="category-legend" transform="translate(40,{H - leg_h - 40})">')
-    parts.append(f'<rect x="-12" y="-20" width="360" height="{leg_h}" rx="8" '
+    parts.append(f'<rect x="-12" y="-20" width="{leg_col_w * 3 + 24}" height="{leg_h}" rx="8" '
                  f'fill="#ffffff" fill-opacity="0.9" stroke="#9bb0c4"/>')
     parts.append('<text x="0" y="0" font-size="14" font-weight="bold" fill="#1d3b57">Categories</text>')
-    row = 20
-    for key, k in categories.items():
+    for i, (key, k) in enumerate(cat_items):
+        col = i // n_rows
+        r = i % n_rows
+        cx = col * leg_col_w
+        row = 20 + r * 22
         parts.append(
-            f'<circle cx="7" cy="{row - 4}" r="6" fill="{k["color"]}" stroke="#333"/>'
-            f'<text x="22" y="{row}" font-size="12" fill="#222">{esc(k["label"])}</text>')
-        row += 22
+            f'<circle cx="{cx + 7}" cy="{row - 4}" r="6" fill="{k["color"]}" stroke="#333"/>'
+            f'<text x="{cx + 22}" y="{row}" font-size="12" fill="#222">{esc(k["label"])}</text>')
     parts.append("</g>")
 
     # legend list on the right: cities (numbered) with companies – multi-column, without splitting a city
@@ -312,8 +320,6 @@ def main():
         for f in group:
             color = categories.get(f["category"], {"color": "#888"})["color"]
             nm = f["name"]
-            if len(nm) > 42:
-                nm = nm[:40] + "…"
             parts.append(
                 f'<circle cx="{cx + 30}" cy="{yy - 3.5}" r="4" fill="{color}" stroke="#fff"/>'
                 f'<text x="{cx + 40}" y="{yy}" font-size="10.5" fill="#222">{esc(nm)}</text>')
