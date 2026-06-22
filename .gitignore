@@ -1,5 +1,6 @@
 # Build artifacts
 microelectronics_austria.svg
+microelectronics_austria.png
 _site/
 
 # Python
@@ -8,3 +9,4 @@ __pycache__/
 
 # macOS
 .DS_Store
+
