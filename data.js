@@ -72,7 +72,7 @@ window.COMPANIES = [
 
   // ===================== EQUIPMENT & MASKS =====================
   { name: "EV Group (EVG, wafer bonding & lithography)", city: "St. Florian am Inn", state: "Upper Austria", lat: 48.3700, lon: 13.4800, category: "equipment", web: "https://www.evgroup.com" },
-  { name: "IMS Nanofabrication (Intel, multibeam mask writer)", city: "Brunn am Gebirge", state: "Lower Austria", lat: 48.1060, lon: 16.2900, category: "equipment", web: "https://www.imsnanofabrication.com" },
+  { name: "IMS Nanofabrication (Intel, multibeam mask writer)", city: "Brunn am Gebirge", state: "Lower Austria", lat: 48.1060, lon: 16.2900, category: "equipment", web: "https://www.ims.co.at" },
   { name: "Lam Research Austria (formerly SEZ, wet process)", city: "Villach", state: "Carinthia", lat: 46.6100, lon: 13.8700, category: "equipment", web: "https://www.lamresearch.com" },
   { name: "Semsysco (Lam Research, wet chemistry)", city: "Salzburg", state: "Salzburg", lat: 47.8095, lon: 13.0560, category: "equipment", web: "https://www.lamresearch.com" },
   { name: "BESI Austria (formerly Datacon, die attach/packaging)", city: "Radfeld", state: "Tyrol", lat: 47.4300, lon: 11.9100, category: "equipment", web: "https://www.besi.com" },
