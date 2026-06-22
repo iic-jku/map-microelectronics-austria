@@ -64,7 +64,7 @@ window.COMPANIES = [
   { name: "CISC Semiconductor (RFID/NFC/RISC-V engineering)", city: "Klagenfurt", state: "Carinthia", lat: 46.6160, lon: 14.2650, category: "design", web: "https://www.cisc.at" },
   { name: "Bosch (Robert Bosch AG, automotive electronics development)", city: "Linz", state: "Upper Austria", lat: 48.2800, lon: 14.3200, category: "design", web: "https://www.bosch.at", note: "Electronics/software development; no chip manufacturing in AT" },
   { name: "Broadcom", city: "Vienna", state: "Vienna", lat: 48.1820, lon: 16.3330, category: "design", web: "https://www.broadcom.com" },
-  { name: "Medtronic", city: "Innsbruck", state: "Tyrol", lat: 47.2692, lon: 11.4041, category: "design", web: "https://www.medtronic.com" },
+  { name: "MED-EL (hearing implants, cochlear/middle ear implant development & manufacturing)", city: "Innsbruck", state: "Tyrol", lat: 47.2640, lon: 11.3680, category: "design", web: "https://www.medel.com" },
 
   // ===================== COMPONENTS, SUBSTRATES, PACKAGING & EMS =====================
   { name: "AT&S Austria Technologie & Systemtechnik (IC substrates, HDI PCB)", city: "Leoben", state: "Styria", lat: 47.3830, lon: 15.0960, category: "components", web: "https://ats.net" },
