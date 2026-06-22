@@ -1,0 +1,10 @@
+# Build artifacts
+microelectronics_austria.svg
+_site/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# macOS
+.DS_Store

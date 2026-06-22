@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!--
+  Copyright 2026 Harald Pretl, Department for Integrated Circuits (ICD)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Microelectronics in Austria – Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<style>
+  html, body { margin: 0; height: 100%; font-family: "Segoe UI", Arial, sans-serif; }
+  #map { position: absolute; inset: 0; }
+  .title {
+    position: absolute; top: 12px; left: 50px; z-index: 1000;
+    background: rgba(255,255,255,.92); padding: 8px 14px; border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.3); font-weight: 700; font-size: 17px;
+  }
+  .title small { display:block; font-weight: 400; font-size: 12px; color:#555; }
+  .legend {
+    line-height: 1.5; background: rgba(255,255,255,.94); padding: 10px 12px;
+    border-radius: 8px; box-shadow: 0 1px 6px rgba(0,0,0,.3); font-size: 13px;
+  }
+  .legend b { display:block; margin-bottom: 6px; }
+  .legend .row { cursor: pointer; user-select: none; }
+  .legend .row.off { opacity: .35; text-decoration: line-through; }
+  .legend i { width: 12px; height: 12px; display:inline-block; margin-right: 7px;
+               border-radius: 50%; vertical-align: middle; border: 1px solid #333; }
+  .leaflet-popup-content { font-size: 13px; }
+  .leaflet-popup-content b { font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="title">Microelectronics in Austria
+  <small>Companies, research &amp; institutions · editable via <code>data.js</code></small>
+</div>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="data.js"></script>
+<script>
+  const map = L.map('map', { scrollWheelZoom: true }).setView([47.6, 14.2], 7);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // Groups per category (for showing/hiding)
+  const groups = {};
+  for (const key in CATEGORIES) groups[key] = L.layerGroup().addTo(map);
+
+  function markerIcon(color) {
+    return L.divIcon({
+      className: '',
+      html: `<div style="width:16px;height:16px;border-radius:50%;background:${color};
+                         border:2px solid #fff;box-shadow:0 0 3px rgba(0,0,0,.6)"></div>`,
+      iconSize: [16,16], iconAnchor: [8,8], popupAnchor: [0,-8]
+    });
+  }
+
+  const bounds = [];
+  COMPANIES.forEach(f => {
+    const cat = CATEGORIES[f.category] || { color: '#888', label: f.category };
+    const m = L.marker([f.lat, f.lon], { icon: markerIcon(cat.color), title: f.name });
+    const link = f.web ? `<br><a href="${f.web}" target="_blank" rel="noopener">${f.web.replace(/^https?:\/\//,'')}</a>` : '';
+    const note = f.note ? `<br><i style="color:#a15">${f.note}</i>` : '';
+    m.bindPopup(`<b>${f.name}</b><br>${f.city}, ${f.state}<br>
+                 <span style="color:${cat.color}">●</span> ${cat.label}${note}${link}`);
+    m.bindTooltip(f.name, { direction: 'top', offset: [0,-8] });
+    (groups[f.category] || groups[Object.keys(groups)[0]]).addLayer(m);
+    bounds.push([f.lat, f.lon]);
+  });
+  if (bounds.length) map.fitBounds(bounds, { padding: [40,40] });
+
+  // Legend with click filter
+  const legend = L.control({ position: 'bottomright' });
+  legend.onAdd = function() {
+    const div = L.DomUtil.create('div', 'legend');
+    let html = '<b>Categories (click to filter)</b>';
+    for (const key in CATEGORIES) {
+      const k = CATEGORIES[key];
+      html += `<div class="row" data-key="${key}"><i style="background:${k.color}"></i>${k.label}</div>`;
+    }
+    div.innerHTML = html;
+    L.DomEvent.disableClickPropagation(div);
+    div.querySelectorAll('.row').forEach(row => {
+      row.addEventListener('click', () => {
+        const key = row.dataset.key;
+        if (map.hasLayer(groups[key])) { map.removeLayer(groups[key]); row.classList.add('off'); }
+        else { map.addLayer(groups[key]); row.classList.remove('off'); }
+      });
+    });
+    return div;
+  };
+  legend.addTo(map);
+</script>
+</body>
+</html>
