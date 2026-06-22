@@ -50,6 +50,7 @@ window.COMPANIES = [
   { name: "Vishay Semiconductor Austria", city: "Vöcklabruck", state: "Upper Austria", lat: 48.0037, lon: 13.6583, category: "semiconductor", web: "https://www.vishay.com" },
 
   // ===================== CHIP DESIGN / FABLESS / DESIGN CENTERS =====================
+  { name: "semify (digital ASIC design & verification)", city: "Graz", state: "Styria", lat: 47.0697, lon: 15.4278, category: "design", web: "https://www.semify-eda.com" },
   { name: "Photeon Technologies (silicon photonics chip design)", city: "Dornbirn", state: "Vorarlberg", lat: 47.4100, lon: 9.7450, category: "design", web: "https://www.photeon.com" },
   { name: "Infineon Technologies Austria (design center)", city: "Graz", state: "Styria", lat: 47.0730, lon: 15.4212, category: "design", web: "https://www.infineon.com/austria" },
   { name: "Infineon Technologies Austria (design center)", city: "Klagenfurt", state: "Carinthia", lat: 46.6149, lon: 14.2653, category: "design", web: "https://www.infineon.com/austria" },
