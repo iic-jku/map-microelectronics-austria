@@ -102,6 +102,9 @@ window.COMPANIES = [
   { name: "FH Technikum Wien – Dept. Electronic Engineering", city: "Vienna", state: "Vienna", lat: 48.2308, lon: 16.3750, category: "university", web: "https://www.technikum-wien.at/departments/electronic-engineering/" },
   { name: "Carinthia UAS / CIME (IC design, green electronics)", city: "Villach", state: "Carinthia", lat: 46.6155, lon: 13.8450, category: "university", web: "https://www.fh-kaernten.at" },
 
+  // ===================== EMBEDDED, POWER & AUTOMATION =====================
+  { name: "TTTech Computertechnik (safety-critical embedded networking, TTA/TSN)", city: "Vienna", state: "Vienna", lat: 48.1933, lon: 16.3580, category: "embedded", web: "https://www.tttech.com" },
+
   // ===================== CLUSTERS & ASSOCIATIONS =====================
   { name: "SILICON ALPS Cluster", city: "Villach", state: "Carinthia", lat: 46.6167, lon: 13.8467, category: "cluster", web: "https://www.silicon-alps.at" },
   { name: "FEEI – Association of the Electrical and Electronics Industry", city: "Vienna", state: "Vienna", lat: 48.1978, lon: 16.3556, category: "cluster", web: "https://www.feei.at" }
