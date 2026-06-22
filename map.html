@@ -64,30 +64,71 @@
     attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
   }).addTo(map);
 
-  // Groups per category (for showing/hiding)
-  const groups = {};
-  for (const key in CATEGORIES) groups[key] = L.layerGroup().addTo(map);
+  // Group companies by city, ordered west→east (matching SVG numbering)
+  const cityMap = {};
+  COMPANIES.forEach(f => {
+    if (!cityMap[f.city]) cityMap[f.city] = { state: f.state, companies: [] };
+    cityMap[f.city].companies.push(f);
+  });
+  const cityOrder = Object.keys(cityMap).sort((a, b) => {
+    const avgLon = g => g.companies.reduce((s, c) => s + c.lon, 0) / g.companies.length;
+    return avgLon(cityMap[a]) - avgLon(cityMap[b]);
+  });
 
-  function markerIcon(color) {
+  // Active category filter
+  const activeCategories = new Set(Object.keys(CATEGORIES));
+  const cityMarkers = {};
+
+  function cityIcon(n) {
     return L.divIcon({
       className: '',
-      html: `<div style="width:16px;height:16px;border-radius:50%;background:${color};
-                         border:2px solid #fff;box-shadow:0 0 3px rgba(0,0,0,.6)"></div>`,
-      iconSize: [16,16], iconAnchor: [8,8], popupAnchor: [0,-8]
+      html: `<div style="width:24px;height:24px;border-radius:50%;background:#1d3b57;
+                         border:2px solid #fff;box-shadow:0 1px 5px rgba(0,0,0,.5);
+                         color:#fff;font-weight:700;font-size:11px;line-height:20px;
+                         text-align:center">${n}</div>`,
+      iconSize: [24,24], iconAnchor: [12,12], popupAnchor: [0,-12]
     });
   }
 
+  function buildPopup(city) {
+    const data = cityMap[city];
+    let html = `<b style="font-size:15px">${city}</b> `
+             + `<span style="color:#789;font-size:12px">${data.state}</span>`
+             + `<hr style="margin:5px 0">`;
+    data.companies.forEach(f => {
+      const cat = CATEGORIES[f.category] || { color: '#888', label: f.category };
+      const name = f.web
+        ? `<a href="${f.web}" target="_blank" rel="noopener" style="color:#1d3b57">${f.name}</a>`
+        : f.name;
+      const note = f.note ? ` <i style="color:#a15;font-size:11px">(${f.note})</i>` : '';
+      html += `<div style="margin:3px 0;${activeCategories.has(f.category)?'':'opacity:.35'}">
+                 <span style="color:${cat.color};font-size:15px">●</span> ${name}${note}
+               </div>`;
+    });
+    return html;
+  }
+
+  function updateMarkers() {
+    for (const city in cityMarkers) {
+      const { marker, data } = cityMarkers[city];
+      const visible = data.companies.some(c => activeCategories.has(c.category));
+      if (visible) { if (!map.hasLayer(marker)) map.addLayer(marker); }
+      else map.removeLayer(marker);
+    }
+  }
+
   const bounds = [];
-  COMPANIES.forEach(f => {
-    const cat = CATEGORIES[f.category] || { color: '#888', label: f.category };
-    const m = L.marker([f.lat, f.lon], { icon: markerIcon(cat.color), title: f.name });
-    const link = f.web ? `<br><a href="${f.web}" target="_blank" rel="noopener">${f.web.replace(/^https?:\/\//,'')}</a>` : '';
-    const note = f.note ? `<br><i style="color:#a15">${f.note}</i>` : '';
-    m.bindPopup(`<b>${f.name}</b><br>${f.city}, ${f.state}<br>
-                 <span style="color:${cat.color}">●</span> ${cat.label}${note}${link}`);
-    m.bindTooltip(f.name, { direction: 'top', offset: [0,-8] });
-    (groups[f.category] || groups[Object.keys(groups)[0]]).addLayer(m);
-    bounds.push([f.lat, f.lon]);
+  cityOrder.forEach((city, idx) => {
+    const data = cityMap[city];
+    const avgLat = data.companies.reduce((s, c) => s + c.lat, 0) / data.companies.length;
+    const avgLon = data.companies.reduce((s, c) => s + c.lon, 0) / data.companies.length;
+    const n = data.companies.length;
+    const marker = L.marker([avgLat, avgLon], { icon: cityIcon(n), title: city }).addTo(map);
+    marker.bindPopup(() => buildPopup(city), { maxWidth: 400 });
+    marker.bindTooltip(`<b>${city}</b> · ${data.companies.length} entr${data.companies.length===1?'y':'ies'}`,
+                       { direction: 'top', offset: [0,-12] });
+    cityMarkers[city] = { marker, data };
+    bounds.push([avgLat, avgLon]);
   });
   if (bounds.length) map.fitBounds(bounds, { padding: [40,40] });
 
@@ -105,8 +146,9 @@
     div.querySelectorAll('.row').forEach(row => {
       row.addEventListener('click', () => {
         const key = row.dataset.key;
-        if (map.hasLayer(groups[key])) { map.removeLayer(groups[key]); row.classList.add('off'); }
-        else { map.addLayer(groups[key]); row.classList.remove('off'); }
+        if (activeCategories.has(key)) { activeCategories.delete(key); row.classList.add('off'); }
+        else { activeCategories.add(key); row.classList.remove('off'); }
+        updateMarkers();
       });
     });
     return div;
