@@ -50,9 +50,10 @@ window.COMPANIES = [
   { name: "Vishay Semiconductor Austria", city: "Vöcklabruck", state: "Upper Austria", lat: 48.0050, lon: 13.6550, category: "semiconductor", web: "https://www.vishay.com" },
 
   // ===================== CHIP DESIGN / FABLESS / DESIGN CENTERS =====================
-  { name: "Infineon Technologies Austria (design center)", city: "Graz", state: "Styria", lat: 47.0707, lon: 15.4395, category: "design", web: "https://www.infineon.com/austria" },
-  { name: "Infineon Technologies Austria (design center)", city: "Klagenfurt", state: "Carinthia", lat: 46.6230, lon: 14.3050, category: "design", web: "https://www.infineon.com/austria" },
-  { name: "Infineon Technologies (design center)", city: "Linz", state: "Upper Austria", lat: 48.3069, lon: 14.2858, category: "design", web: "https://www.infineon.com/austria" },
+  { name: "Photeon Technologies (silicon photonics chip design)", city: "Dornbirn", state: "Vorarlberg", lat: 47.4100, lon: 9.7450, category: "design", web: "https://www.photeon.com" },
+  { name: "Infineon Technologies Austria (design center)", city: "Graz", state: "Styria", lat: 47.0730, lon: 15.4212, category: "design", web: "https://www.infineon.com/austria" },
+  { name: "Infineon Technologies Austria (design center)", city: "Klagenfurt", state: "Carinthia", lat: 46.6149, lon: 14.2653, category: "design", web: "https://www.infineon.com/austria" },
+  { name: "Infineon Technologies (design center)", city: "Linz", state: "Upper Austria", lat: 48.3150, lon: 14.3040, category: "design", web: "https://www.infineon.com/austria" },
   { name: "NXP Semiconductors Austria (security/RFID IC design)", city: "Gratkorn", state: "Styria", lat: 47.1233, lon: 15.3469, category: "design", web: "https://www.nxp.com" },
   { name: "Apple (design center)", city: "Linz", state: "Upper Austria", lat: 48.3010, lon: 14.3050, category: "design", web: "https://www.apple.com" },
   { name: "Bridgecom Semiconductors (fabless, cellular IoT modems)", city: "Linz", state: "Upper Austria", lat: 48.3120, lon: 14.3030, category: "design", web: "https://www.bridgecom-semiconductors.com" },
