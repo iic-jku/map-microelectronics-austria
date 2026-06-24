@@ -45,6 +45,13 @@
   .leaflet-popup-content b { font-size: 14px; }
   /* Tone down the basemap so markers stand out */
   .leaflet-tile-pane { filter: saturate(.55) brightness(1.03); }
+  .source-footer {
+    position: absolute; bottom: 0; left: 0; z-index: 1000;
+    background: rgba(255,255,255,.92); padding: 4px 10px;
+    border-top-right-radius: 8px; box-shadow: 0 -1px 4px rgba(0,0,0,.2);
+    font-size: 11px; color: #555; max-width: 60%;
+  }
+  .source-footer a { color: #1d3b57; }
 </style>
 </head>
 <body>
@@ -53,6 +60,12 @@
   <small>&copy; 2026 Harald Pretl, Johannes Kepler University, Linz, Austria</small>
 </div>
 <div id="map"></div>
+<div class="source-footer">
+  Source: curated from FEEI, Silicon Alps Cluster, Silicon Austria Labs, company
+  register/Northdata &amp; company/university websites · Coordinates:
+  <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+  (Nominatim) · State geometry: GeoJSON Austria · As of 2026-06
+</div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

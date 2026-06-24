@@ -370,8 +370,8 @@ def main():
     parts.append(
         f'<text x="40" y="{H - 14}" font-size="10" fill="#789">'
         f'Source: curated from FEEI, Silicon Alps Cluster, Silicon Austria Labs, '
-        f'company register/Northdata &amp; company/university websites · Geometry: GeoJSON '
-        f'Austria · As of 2026-06 · Markers slightly relaxed in metropolitan areas</text>')
+        f'company register/Northdata &amp; company/university websites · Coordinates: '
+        f'OpenStreetMap (Nominatim) · State geometry: GeoJSON Austria · As of 2026-06</text>')
 
     parts.append("</svg>")
 
