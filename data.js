@@ -66,6 +66,8 @@ window.COMPANIES = [
   { name: "CISC Semiconductor (RFID/NFC/RISC-V engineering)", city: "Klagenfurt", state: "Carinthia", lat: 46.6143, lon: 14.2647, category: "design", web: "https://www.cisc.at" },
   { name: "Bosch (Robert Bosch AG, automotive electronics development)", city: "Linz", state: "Upper Austria", lat: 48.2760, lon: 14.3120, category: "design", web: "https://www.bosch.at", note: "Electronics/software development; no chip manufacturing in AT" },
   { name: "Broadcom", city: "Vienna", state: "Vienna", lat: 48.1756, lon: 16.3353, category: "design", web: "https://www.broadcom.com" },
+  { name: "Symbiotic EDA (formal verification EDA tools)", city: "Vienna", state: "Vienna", lat: 48.1817, lon: 16.3725, category: "design", web: "https://www.symbioticeda.com", note: "Alaudagasse 11, 1100 Vienna" },
+  { name: "YosysHQ (open-source synthesis & formal tools)", city: "Vienna", state: "Vienna", lat: 48.2237, lon: 16.3197, category: "design", web: "https://www.yosyshq.com", note: "Dornbacher Straße 12, 1170 Vienna" },
   { name: "MED-EL (hearing implants, cochlear/middle ear implant development & manufacturing)", city: "Innsbruck", state: "Tyrol", lat: 47.2680, lon: 11.3720, category: "design", web: "https://www.medel.com" },
 
   // ===================== COMPONENTS, SUBSTRATES, PACKAGING & EMS =====================
@@ -92,6 +94,7 @@ window.COMPANIES = [
   { name: "Silicon Austria Labs (SAL) – HQ", city: "Graz", state: "Styria", lat: 47.0600, lon: 15.4522, category: "research", web: "https://silicon-austria-labs.com" },
   { name: "Silicon Austria Labs (SAL)", city: "Villach", state: "Carinthia", lat: 46.6167, lon: 13.8467, category: "research", web: "https://silicon-austria-labs.com" },
   { name: "Silicon Austria Labs (SAL)", city: "Linz", state: "Upper Austria", lat: 48.3349, lon: 14.3237, category: "research", web: "https://silicon-austria-labs.com" },
+  { name: "Materials Center Leoben (MCL, materials research for microelectronics)", city: "Leoben", state: "Styria", lat: 47.3745, lon: 15.0940, category: "research", web: "https://www.mcl.at" },
 
   // ===================== UNIVERSITIES / UAS =====================
   { name: "TU Wien – Institute of Microelectronics / ZMNS / ISAS", city: "Vienna", state: "Vienna", lat: 48.1983, lon: 16.3700, category: "university", web: "https://www.tuwien.at/etit" },
