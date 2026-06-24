@@ -98,7 +98,8 @@ window.COMPANIES = [
   { name: "TU Graz – Institute of Electronics (IFE)", city: "Graz", state: "Styria", lat: 47.0580, lon: 15.4582, category: "university", web: "https://www.tugraz.at/institute/ife/home" },
   { name: "TU Graz – Institute of Technical Informatics (ITI)", city: "Graz", state: "Styria", lat: 47.0578, lon: 15.4612, category: "university", web: "https://www.tugraz.at/institute/iti/home" },
   { name: "JKU Linz – Institute for Microelectronics and Microsensors", city: "Linz", state: "Upper Austria", lat: 48.3343, lon: 14.3209, category: "university", web: "https://www.jku.at", note: "Science Park 1, JKU campus" },
-  { name: "JKU Linz – Department for Integrated Circuits", city: "Linz", state: "Upper Austria", lat: 48.3349, lon: 14.3237, category: "university", web: "https://www.jku.at", note: "Science Park 4, JKU campus" },
+  { name: "JKU Linz – Department for Integrated Circuits (ICD)", city: "Linz", state: "Upper Austria", lat: 48.3349, lon: 14.3237, category: "university", web: "https://www.jku.at", note: "Science Park 4, JKU campus" },
+  { name: "JKU Linz – Institute for Communications Engineering and RF Systems (NTHFS)", city: "Linz", state: "Upper Austria", lat: 48.3355, lon: 14.3220, category: "university", web: "https://www.jku.at/nthfs" },
   { name: "FH Technikum Wien – Dept. Electronic Engineering", city: "Vienna", state: "Vienna", lat: 48.2308, lon: 16.3750, category: "university", web: "https://www.technikum-wien.at/departments/electronic-engineering/" },
   { name: "Carinthia UAS / CIME (IC design, green electronics)", city: "Villach", state: "Carinthia", lat: 46.6155, lon: 13.8450, category: "university", web: "https://www.fh-kaernten.at" },
 
