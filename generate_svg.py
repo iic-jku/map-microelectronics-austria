@@ -43,10 +43,10 @@ GEOJSON_URLS = [
 ]
 
 W, H = 1720, 1188          # SVG size (A4 landscape ratio 297:210)
-MAP = (30, 95, 1180, 1130)  # map area (x0, y0, x1, y1)
-PANEL_X = 1210             # left edge of the legend list
-PANEL_COLS = 1            # columns of the location list
-PANEL_COL_W = 500         # column width
+MAP = (30, 95, 980, 1130)  # map area (x0, y0, x1, y1)
+PANEL_X = 1000             # left edge of the legend list
+PANEL_COLS = 2            # columns of the location list
+PANEL_COL_W = 360         # column width
 DOT_R = 6                  # point radius
 
 
@@ -167,6 +167,32 @@ def make_projector(bbox, box):
 def esc(s):
     return (str(s).replace("&", "&amp;").replace("<", "&lt;")
             .replace(">", "&gt;").replace('"', "&quot;"))
+
+
+def wrap_text(text, max_w, font_size=10.5):
+    """Greedy word-wrap to fit max_w pixels (approx Arial char width)."""
+    cw = font_size * 0.55  # rough average character width
+    max_chars = max(8, int(max_w / cw))
+    lines = []
+    cur = ""
+    for word in str(text).split():
+        trial = (cur + " " + word).strip()
+        if len(trial) <= max_chars or not cur:
+            # hard-break a single word that is longer than the column
+            while not cur and len(word) > max_chars:
+                lines.append(word[:max_chars - 1] + "-")
+                word = word[max_chars - 1:]
+                trial = word
+            cur = trial
+        else:
+            lines.append(cur)
+            cur = word
+            while len(cur) > max_chars:
+                lines.append(cur[:max_chars - 1] + "-")
+                cur = cur[max_chars - 1:]
+    if cur:
+        lines.append(cur)
+    return lines or [""]
 def relax_markers(positions, radius=13, iterations=120):
     """Pushes markers that are too close apart so numbers stay readable."""
     import math
@@ -274,7 +300,7 @@ def main():
     # category legend (bottom left on the map) – three columns
     cat_items = list(categories.items())
     n_rows = (len(cat_items) + 2) // 3
-    leg_col_w = 340
+    leg_col_w = 300
     leg_h = 22 * n_rows + 36
     parts.append(f'<g id="category-legend" transform="translate(40,{H - leg_h - 40})">')
     parts.append(f'<rect x="-12" y="-20" width="{leg_col_w * 3 + 24}" height="{leg_h}" rx="8" '
@@ -298,13 +324,24 @@ def main():
     col = 0
     yy = top
 
-    def block_height(group):
-        return 18 + 15 * len(group) + 6
+    name_w = PANEL_COL_W - 46  # available text width inside a column
+    line_h = 13
 
+    def entry_lines(f):
+        return wrap_text(f["name"], name_w)
+
+    def block_height(group):
+        h = 18 + 6
+        for f in group:
+            h += 15 + (len(entry_lines(f)) - 1) * line_h
+        return h
+
+    # fill the first column completely; only the entries that no longer fit
+    # spill over into the next column.
     for city in order:
         group = cities[city]
         bh = block_height(group)
-        if yy + bh > bottom and col < PANEL_COLS - 1:
+        if col < PANEL_COLS - 1 and yy + bh > bottom:
             col += 1
             yy = top
         cx = PANEL_X + col * PANEL_COL_W
@@ -319,11 +356,14 @@ def main():
         yy += 18
         for f in group:
             color = categories.get(f["category"], {"color": "#888"})["color"]
-            nm = f["name"]
+            lines = entry_lines(f)
             parts.append(
-                f'<circle cx="{cx + 30}" cy="{yy - 3.5}" r="4" fill="{color}" stroke="#fff"/>'
-                f'<text x="{cx + 40}" y="{yy}" font-size="10.5" fill="#222">{esc(nm)}</text>')
-            yy += 15
+                f'<circle cx="{cx + 30}" cy="{yy - 3.5}" r="4" fill="{color}" stroke="#fff"/>')
+            for li, ln in enumerate(lines):
+                parts.append(
+                    f'<text x="{cx + 40}" y="{yy + li * line_h:.1f}" font-size="10.5" '
+                    f'fill="#222">{esc(ln)}</text>')
+            yy += 15 + (len(lines) - 1) * line_h
         yy += 6
     parts.append("</g>")
 

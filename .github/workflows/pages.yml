@@ -19,9 +19,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
-# Allow the workflow to publish to GitHub Pages.
+# Allow the workflow to publish to GitHub Pages and commit the rendered PNG.
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -67,3 +67,37 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Render a PNG from the SVG and commit it back to the repo (runs in
+  # parallel to the Pages build/deploy above).
+  render-png:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install SVG renderer
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends librsvg2-bin
+
+      - name: Generate SVG map
+        run: python3 generate_svg.py
+
+      - name: Render PNG from SVG
+        run: rsvg-convert -w 3440 microelectronics_austria.svg -o microelectronics_austria.png
+
+      - name: Commit PNG if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add microelectronics_austria.png
+          if git diff --cached --quiet; then
+            echo "PNG unchanged, nothing to commit."
+          else
+            git commit -m "Update rendered PNG map [skip ci]"
+            git push
+          fi

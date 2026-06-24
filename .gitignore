@@ -1,7 +1,9 @@
 # Build artifacts
 microelectronics_austria.svg
-microelectronics_austria.png
 _site/
+
+# Note: microelectronics_austria.png is committed by the CI workflow
+# (rendered from the SVG on every push), so it is intentionally tracked.
 
 # Python
 __pycache__/
