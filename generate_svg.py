@@ -25,9 +25,11 @@ state areas, points and labels can be selected individually.)
 Requires only the standard library. Downloads the state geometry once
 from the web and stores it locally as austria_states.geojson (cache).
 """
+import base64
 import json
 import os
 import re
+import struct
 import sys
 import urllib.request
 
@@ -35,6 +37,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 GEOJSON_CACHE = os.path.join(HERE, "austria_states.geojson")
 DATA_JS = os.path.join(HERE, "data.js")
 OUT_SVG = os.path.join(HERE, "microelectronics_austria.svg")
+
+# Logos embedded (base64) into the SVG so it stays self-contained.
+# (filename, target height in px)
+LOGOS = [
+    ("logo-JKU.png", 60),
+    ("logo-FEEI.png", 60),
+]
 
 GEOJSON_URLS = [
     "https://raw.githubusercontent.com/ginseng666/GeoJSON-TopoJSON-Austria/master/2021/simplified-99.5/laender_995_geo.json",
@@ -169,6 +178,50 @@ def esc(s):
             .replace(">", "&gt;").replace('"', "&quot;"))
 
 
+def png_size(path):
+    """Return (width, height) of a PNG from its IHDR header."""
+    with open(path, "rb") as fh:
+        header = fh.read(24)
+    if header[:8] != b"\x89PNG\r\n\x1a\n":
+        raise ValueError("Not a PNG: " + path)
+    w, h = struct.unpack(">II", header[16:24])
+    return w, h
+
+
+def logo_images(right_x, top_y, gap=18):
+    """Build <image> elements for LOGOS, embedded as base64, right-aligned.
+
+    Logos are laid out left-to-right and the whole row ends at right_x.
+    Returns ([svg fragments], total_width) or ([], 0) if no logo is found.
+    """
+    items = []
+    for fname, height in LOGOS:
+        path = os.path.join(HERE, fname)
+        if not os.path.exists(path):
+            print(f"  -> logo not found, skipping: {fname}")
+            continue
+        w, h = png_size(path)
+        width = height * w / h
+        with open(path, "rb") as fh:
+            b64 = base64.b64encode(fh.read()).decode("ascii")
+        items.append((fname, width, height, b64))
+
+    if not items:
+        return [], 0.0
+
+    total_w = sum(it[1] for it in items) + gap * (len(items) - 1)
+    frags = []
+    x = right_x - total_w
+    for fname, width, height, b64 in items:
+        frags.append(
+            f'<image x="{x:.1f}" y="{top_y:.1f}" width="{width:.1f}" '
+            f'height="{height:.1f}" preserveAspectRatio="xMidYMid meet" '
+            f'xlink:href="data:image/png;base64,{b64}">'
+            f'<title>{esc(fname)}</title></image>')
+        x += width + gap
+    return frags, total_w
+
+
 def wrap_text(text, max_w, font_size=10.5):
     """Greedy word-wrap to fit max_w pixels (approx Arial char width)."""
     cw = font_size * 0.55  # rough average character width
@@ -233,7 +286,8 @@ def main():
     number = {city: i + 1 for i, city in enumerate(order)}
 
     parts = [
-        f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" '
+        f'<svg xmlns="http://www.w3.org/2000/svg" '
+        f'xmlns:xlink="http://www.w3.org/1999/xlink" width="{W}" height="{H}" '
         f'viewBox="0 0 {W} {H}" font-family="Arial, Helvetica, sans-serif">',
         f'<rect width="{W}" height="{H}" fill="#eef3f8"/>',
         '<g id="bundeslaender" stroke="#9bb0c4" stroke-width="1" fill="#dfe8f1">',
@@ -261,7 +315,15 @@ def main():
         f'{len(cities)} cities</text>')
     parts.append(
         f'<text x="40" y="96" font-size="13" fill="#789">'
-        f'&#169; 2026 Harald Pretl, Johannes Kepler University, Linz, Austria</text>')
+        f'&#169; 2026 Harald Pretl, Johannes Kepler University, Linz, Austria, '
+        f'in cooperation with FEEI</text>')
+
+    # logos (top right)
+    logo_frags, _ = logo_images(right_x=W - 40, top_y=28)
+    if logo_frags:
+        parts.append('<g id="logos">')
+        parts.extend(logo_frags)
+        parts.append("</g>")
 
     # real geo positions + relaxed positions for the numbered markers
     geo_xy = []
@@ -318,9 +380,9 @@ def main():
 
     # legend list on the right: cities (numbered) with companies – multi-column, without splitting a city
     parts.append(f'<g id="list">')
-    parts.append(f'<text x="{PANEL_X}" y="76" font-size="17" font-weight="bold" '
+    parts.append(f'<text x="{PANEL_X}" y="128" font-size="17" font-weight="bold" '
                  f'fill="#1d3b57">Locations (West → East)</text>')
-    top, bottom = 100, H - 30
+    top, bottom = 152, H - 30
     col = 0
     yy = top
 

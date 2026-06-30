@@ -66,4 +66,5 @@ to **GitHub Actions** once in the repository.
 Licensed under the [Apache License, Version 2.0](LICENSE). See [`NOTICE`](NOTICE)
 for attribution details.
 
-Copyright 2026 Harald Pretl, Department for Integrated Circuits (ICD).
+Copyright 2026 Harald Pretl, Department for Integrated Circuits (ICD),
+Johannes Kepler University, Linz, Austria, in cooperation with FEEI.
