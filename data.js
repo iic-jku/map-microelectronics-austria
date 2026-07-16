@@ -113,8 +113,8 @@ window.COMPANIES = [
   { name: "JKU Linz – Institute for Communications Engineering and RF Systems (NTHFS)", city: "Linz", state: "Upper Austria", lat: 48.3360, lon: 14.3236, category: "university", web: "https://www.jku.at/nthfs" },
   { name: "FH Technikum Wien – Dept. Electronic Engineering", city: "Vienna", state: "Vienna", lat: 48.2392, lon: 16.3774, category: "university", web: "https://www.technikum-wien.at/departments/electronic-engineering/" },
   { name: "Carinthia UAS / CIME (IC design, green electronics)", city: "Villach", state: "Carinthia", lat: 46.6111, lon: 13.8838, category: "university", web: "https://www.fh-kaernten.at" },
-  { name: "FH JOANNEUM – Institute of Electronic Engineering (embedded systems, power electronics, FPGA/PCB design, RF)", city: "Graz", state: "Styria", lat: 47.0658, lon: 15.4139, category: "university", web: "https://www.fh-joanneum.at/institut/electronic-engineering/" },
-  { name: "FH JOANNEUM – Institute of Electronic Engineering (system test engineering)", city: "Kapfenberg", state: "Styria", lat: 47.4386, lon: 15.2907, category: "university", web: "https://www.fh-joanneum.at/institut/electronic-engineering/" },
+  { name: "FH JOANNEUM – Institute of Electronic Engineering (embedded systems, power electronics, FPGA/PCB design, RF)", city: "Graz", state: "Styria", lat: 47.0697, lon: 15.4096, category: "university", web: "https://www.fh-joanneum.at/institut/electronic-engineering/" },
+  { name: "FH JOANNEUM – Institute of Electronic Engineering (system test engineering)", city: "Kapfenberg", state: "Styria", lat: 47.4536, lon: 15.3320, category: "university", web: "https://www.fh-joanneum.at/institut/electronic-engineering/" },
 
   // ===================== EMBEDDED, POWER & AUTOMATION =====================
   { name: "TTTech Computertechnik (safety-critical embedded networking, TTA/TSN)", city: "Vienna", state: "Vienna", lat: 48.1949, lon: 16.3616, category: "embedded", web: "https://www.tttech.com" },
