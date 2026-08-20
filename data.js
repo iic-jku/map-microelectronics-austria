@@ -63,14 +63,14 @@ window.COMPANIES = [
   { name: "Qualcomm Research Austria", city: "Salzburg", state: "Salzburg", lat: 47.8057, lon: 13.0451, category: "design", web: "https://www.qualcomm.com/research/locations/austria" },
   { name: "Renesas Electronics (formerly Panthronics, NFC chips)", city: "Graz", state: "Styria", lat: 47.0389, lon: 15.4639, category: "design", web: "https://www.renesas.com" },
   { name: "STMicroelectronics Austria (NFC/UWB Competence Center)", city: "Graz", state: "Styria", lat: 47.0612, lon: 15.4137, category: "design", web: "https://www.st.com" },
-  { name: "CISC Semiconductor (RFID/NFC/RISC-V engineering)", city: "Klagenfurt", state: "Carinthia", lat: 46.6133, lon: 14.2646, category: "design", web: "https://www.cisc.at" },
+  { name: "CISC Semiconductor (RFID/NFC/RISC-V engineering)", city: "Klagenfurt", state: "Carinthia", lat: 46.6145, lon: 14.2621, category: "design", web: "https://www.cisc.at" },
   { name: "Bosch (Robert Bosch AG, automotive electronics development)", city: "Linz", state: "Upper Austria", lat: 48.3074, lon: 14.3091, category: "design", web: "https://www.bosch.at" },
   { name: "Broadcom", city: "Vienna", state: "Vienna", lat: 48.1701, lon: 16.334, category: "design", web: "https://www.broadcom.com" },
   { name: "Symbiotic EDA (formal verification EDA tools)", city: "Vienna", state: "Vienna", lat: 48.1501, lon: 16.39, category: "design", web: "https://www.symbioticeda.com" },
   { name: "YosysHQ (open-source synthesis & formal tools)", city: "Vienna", state: "Vienna", lat: 48.2272, lon: 16.3057, category: "design", web: "https://www.yosyshq.com" },
   { name: "MED-EL (hearing implants, cochlear/middle ear implant development & manufacturing)", city: "Innsbruck", state: "Tyrol", lat: 47.2628, lon: 11.3741, category: "design", web: "https://www.medel.com" },
-  { name: "Global TCAD Solutions (TCAD process/device simulation, EDA; TU Wien spin-off)", city: "Vienna", state: "Vienna", lat: 48.2008, lon: 16.3720, category: "design", web: "https://www.globaltcad.com" },
-  { name: "DR YIELD (semiconductor yield analytics / AI software)", city: "Graz", state: "Styria", lat: 47.0703, lon: 15.4448, category: "design", web: "https://dryield.com" },
+  { name: "Global TCAD Solutions (TCAD process/device simulation, EDA; TU Wien spin-off)", city: "Vienna", state: "Vienna", lat: 48.2017, lon: 16.3696, category: "design", web: "https://www.globaltcad.com" },
+  { name: "DR YIELD (semiconductor yield analytics / AI software)", city: "Graz", state: "Styria", lat: 47.0701, lon: 15.4456, category: "design", web: "https://dryield.com" },
 
   // ===================== COMPONENTS, SUBSTRATES, PACKAGING & EMS =====================
   { name: "AT&S Austria Technologie & Systemtechnik (IC substrates, HDI PCB)", city: "Leoben", state: "Styria", lat: 47.3585, lon: 15.0677, category: "components", web: "https://ats.net" },
@@ -83,26 +83,26 @@ window.COMPANIES = [
   { name: "Semsysco (Lam Research, wet chemistry)", city: "Salzburg", state: "Salzburg", lat: 47.7945, lon: 13.0121, category: "equipment", web: "https://www.lamresearch.com" },
   { name: "BESI Austria (formerly Datacon, die attach/packaging)", city: "Radfeld", state: "Tyrol", lat: 47.4501, lon: 11.909, category: "equipment", web: "https://www.besi.com" },
   { name: "F&S BONDTEC Semiconductor (wire bonders & bond testers)", city: "Braunau am Inn", state: "Upper Austria", lat: 48.2464, lon: 13.0556, category: "equipment", web: "https://www.fsbondtec.at" },
-  { name: "T.I.P.S. Messtechnik (semiconductor test interfaces)", city: "Villach", state: "Carinthia", lat: 46.6126, lon: 13.8497, category: "equipment", web: "https://www.tips.co.at" },
-  { name: "Siconnex (wet-process / wet-chemistry equipment for semiconductor fabs)", city: "Hof bei Salzburg", state: "Salzburg", lat: 47.8117, lon: 13.1725, category: "equipment", web: "https://www.siconnex.com" },
-  { name: "mechatronic Systemtechnik (automated semiconductor wafer-handling equipment)", city: "Fürnitz", state: "Carinthia", lat: 46.5760, lon: 13.8340, category: "equipment", web: "https://www.mechatronic.at" },
-  { name: "Ortner Reinraumtechnik (cleanroom & decontamination systems)", city: "Villach", state: "Carinthia", lat: 46.6200, lon: 13.8470, category: "equipment", web: "https://ortner-group.com" },
+  { name: "T.I.P.S. Messtechnik (semiconductor test interfaces)", city: "Villach", state: "Carinthia", lat: 46.6102, lon: 13.8863, category: "equipment", web: "https://www.tips.co.at" },
+  { name: "Siconnex (wet-process / wet-chemistry equipment for semiconductor fabs)", city: "Hof bei Salzburg", state: "Salzburg", lat: 47.8224, lon: 13.1990, category: "equipment", web: "https://www.siconnex.com" },
+  { name: "mechatronic Systemtechnik (automated semiconductor wafer-handling equipment)", city: "Fürnitz", state: "Carinthia", lat: 46.5612, lon: 13.8162, category: "equipment", web: "https://www.mechatronic.at" },
+  { name: "Ortner Reinraumtechnik (cleanroom & decontamination systems)", city: "Villach", state: "Carinthia", lat: 46.5931, lon: 13.8536, category: "equipment", web: "https://ortner-group.com" },
 
   // ===================== MATERIALS =====================
   { name: "Plansee SE (refractory metals, sputter targets, EUV components)", city: "Reutte", state: "Tyrol", lat: 47.4946, lon: 10.7368, category: "material", web: "https://www.plansee.com" },
   { name: "RHP-Technology (sputter targets, PV material recycling)", city: "Seibersdorf", state: "Lower Austria", lat: 47.9747, lon: 16.5078, category: "material", web: "https://www.rhp-technology.com" },
-  { name: "EEMCO (SiC single-crystal growth for power devices)", city: "Leonding", state: "Upper Austria", lat: 48.2758, lon: 14.2528, category: "material", web: "https://eemco.at" },
+  { name: "EEMCO (SiC single-crystal growth for power devices)", city: "Leonding", state: "Upper Austria", lat: 48.2754, lon: 14.2312, category: "material", web: "https://eemco.at" },
 
   // ===================== SENSORS & MEASUREMENT TECHNOLOGY (incl. MEMS) =====================
   { name: "USound (MEMS speakers)", city: "Graz", state: "Styria", lat: 47.0612, lon: 15.4137, category: "sensors", web: "https://usound.com" },
-  { name: "SteadySense (medical sensor patches)", city: "Graz", state: "Styria", lat: 47.0285, lon: 15.4872, category: "sensors", web: "https://steadysense.at" },
+  { name: "SteadySense (medical sensor patches)", city: "Raaba-Grambach", state: "Styria", lat: 47.0285, lon: 15.4872, category: "sensors", web: "https://steadysense.at" },
 
   // ===================== RESEARCH INSTITUTIONS =====================
   { name: "Silicon Austria Labs (SAL) – HQ", city: "Graz", state: "Styria", lat: 47.0588, lon: 15.4578, category: "research", web: "https://silicon-austria-labs.com" },
   { name: "Silicon Austria Labs (SAL)", city: "Villach", state: "Carinthia", lat: 46.6094, lon: 13.8849, category: "research", web: "https://silicon-austria-labs.com" },
   { name: "Silicon Austria Labs (SAL)", city: "Linz", state: "Upper Austria", lat: 48.3347, lon: 14.3248, category: "research", web: "https://silicon-austria-labs.com" },
-  { name: "Materials Center Leoben (MCL, materials research for microelectronics)", city: "Leoben", state: "Styria", lat: 47.38, lon: 15.0903, category: "research", web: "https://www.mcl.at" },
-  { name: "Joanneum Research – MATERIALS (sensors, photonics, printed & hybrid electronics)", city: "Weiz", state: "Styria", lat: 47.2196, lon: 15.6250, category: "research", web: "https://www.joanneum.at/materials/en/" },
+  { name: "Materials Center Leoben (MCL, materials research for microelectronics)", city: "Leoben", state: "Styria", lat: 47.3826, lon: 15.0909, category: "research", web: "https://www.mcl.at" },
+  { name: "Joanneum Research – MATERIALS (sensors, photonics, printed & hybrid electronics)", city: "Weiz", state: "Styria", lat: 47.2153, lon: 15.6309, category: "research", web: "https://www.joanneum.at/materials/en/" },
 
   // ===================== UNIVERSITIES / UAS =====================
   { name: "TU Wien – Institute of Microelectronics / ZMNS / ISAS", city: "Vienna", state: "Vienna", lat: 48.1961, lon: 16.3699, category: "university", web: "https://www.tuwien.at/etit" },
@@ -118,9 +118,9 @@ window.COMPANIES = [
 
   // ===================== EMBEDDED, POWER & AUTOMATION =====================
   { name: "TTTech Computertechnik (safety-critical embedded networking, TTA/TSN)", city: "Vienna", state: "Vienna", lat: 48.1949, lon: 16.3616, category: "embedded", web: "https://www.tttech.com" },
-  { name: "CHERRY Embedded Solutions (ex-Theobroma Systems, embedded SoM/SBC design)", city: "Vienna", state: "Vienna", lat: 48.2265, lon: 16.5050, category: "embedded", web: "https://embedded.cherry.de" },
+  { name: "CHERRY Embedded Solutions (ex-Theobroma Systems, embedded SoM/SBC design)", city: "Vienna", state: "Vienna", lat: 48.2232, lon: 16.5098, category: "embedded", web: "https://embedded.cherry.de" },
 
   // ===================== CLUSTERS & ASSOCIATIONS =====================
   { name: "SILICON ALPS Cluster", city: "Villach", state: "Carinthia", lat: 46.6094, lon: 13.8849, category: "cluster", web: "https://www.silicon-alps.at" },
-  { name: "FEEI – Association of the Electrical and Electronics Industry", city: "Vienna", state: "Vienna", lat: 48.1998, lon: 16.3553, category: "cluster", web: "https://www.feei.at" }
+  { name: "FEEI – Association of the Electrical and Electronics Industry", city: "Vienna", state: "Vienna", lat: 48.2002, lon: 16.3561, category: "cluster", web: "https://www.feei.at" }
 ];
