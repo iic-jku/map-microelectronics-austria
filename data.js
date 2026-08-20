@@ -51,7 +51,7 @@ window.COMPANIES = [
 
   // ===================== CHIP DESIGN / FABLESS / DESIGN CENTERS =====================
   { name: "semify (digital ASIC design & verification)", city: "Graz", state: "Styria", lat: 47.0774, lon: 15.4314, category: "design", web: "https://www.semify-eda.com" },
-  { name: "Photeon Technologies (silicon photonics chip design)", city: "Dornbirn", state: "Vorarlberg", lat: 47.4051, lon: 9.7426, category: "design", web: "https://www.photeon.com" },
+  { name: "Photeon Solutions (formerly Photeon Technologies, silicon photonics chip design)", city: "Dornbirn", state: "Vorarlberg", lat: 47.4051, lon: 9.7426, category: "design", web: "https://www.photeon.com" },
   { name: "Infineon Technologies Austria (design center)", city: "Graz", state: "Styria", lat: 47.0729, lon: 15.4211, category: "design", web: "https://www.infineon.com/austria" },
   { name: "Infineon Technologies Austria (design center)", city: "Klagenfurt", state: "Carinthia", lat: 46.6139, lon: 14.2643, category: "design", web: "https://www.infineon.com/austria" },
   { name: "Infineon Technologies (design center)", city: "Linz", state: "Upper Austria", lat: 48.3267, lon: 14.3232, category: "design", web: "https://www.infineon.com/austria" },
