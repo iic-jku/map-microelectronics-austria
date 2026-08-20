@@ -65,7 +65,7 @@ jobs:
           cp logo-FEEI.png _site/logo-FEEI.png
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: _site
 
@@ -78,7 +78,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 
   # Render a PNG from the SVG and commit it back to the repo (runs in
   # parallel to the Pages build/deploy above).
