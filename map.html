@@ -43,8 +43,8 @@
                border-radius: 50%; vertical-align: middle; border: 1px solid #333; }
   .leaflet-popup-content { font-size: 13px; }
   .leaflet-popup-content b { font-size: 14px; }
-  /* Tone down the basemap so markers stand out */
-  .leaflet-tile-pane { filter: saturate(.55) brightness(1.03); }
+  /* Render the basemap in grey so the coloured category markers stand out */
+  .leaflet-tile-pane { filter: grayscale(1) brightness(1.15) contrast(.8); }
   .source-footer {
     position: absolute; bottom: 0; left: 0; z-index: 1000;
     background: rgba(255,255,255,.92); padding: 4px 10px;
@@ -85,18 +85,11 @@
 <script>
   const map = L.map('map', { scrollWheelZoom: true }).setView([47.6, 14.2], 7);
 
-  // Esri "World Light Gray Canvas": keyless, and light enough that the category
-  // markers stay readable. Base and labels are two separate layers; both are
-  // rendered up to zoom 16, so maxNativeZoom lets Leaflet upscale beyond that.
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', {
-    maxNativeZoom: 16,
+  // Standard OpenStreetMap tiles, greyed out via the .leaflet-tile-pane filter
+  // above. Keyless; see https://operations.osmfoundation.org/policies/tiles/
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
-    attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ &copy; OpenStreetMap contributors'
-  }).addTo(map);
-
-  L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', {
-    maxNativeZoom: 16,
-    maxZoom: 19
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
   // Active category filter
