@@ -38,7 +38,7 @@ After editing, reload `map.html` or re-run the SVG generator.
 ## Local usage
 
 View the interactive map by opening `map.html` in a browser (it loads Leaflet
-from a CDN and OpenStreetMap tiles).
+from a CDN and basemap tiles from Esri's "World Light Gray Canvas").
 
 Generate the SVG (requires only the Python standard library):
 
