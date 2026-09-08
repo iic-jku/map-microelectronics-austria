@@ -31,16 +31,16 @@
  */
 
 window.CATEGORIES = {
-  semiconductor: { label: "Semiconductor manufacturer / Fab",          color: "#e6194B" },
-  design:        { label: "Chip design / Fabless / Design center",     color: "#f58231" },
-  components:    { label: "Components, substrates, packaging & EMS",    color: "#ffd700" },
-  equipment:     { label: "Equipment & masks",                         color: "#808000" },
-  material:      { label: "Materials",                                 color: "#9A6324" },
-  sensors:       { label: "Sensors & measurement technology (incl. MEMS)", color: "#42d4f4" },
-  embedded:      { label: "Embedded, Power & Automation",              color: "#3cb44b" },
-  research:      { label: "Research institution",                      color: "#4363d8" },
-  university:    { label: "University / UAS",                          color: "#911eb4" },
-  cluster:       { label: "Cluster & association",                     color: "#000000" }
+  semiconductor: { label: "Semiconductor manufacturer / Fab",          color: "#ef4d4d" },
+  design:        { label: "Chip design / Fabless / Design center",     color: "#f5843c" },
+  components:    { label: "Components, substrates, packaging & EMS",    color: "#f0b429" },
+  equipment:     { label: "Equipment & masks",                         color: "#12a58c" },
+  material:      { label: "Materials",                                 color: "#b4703c" },
+  sensors:       { label: "Sensors & measurement technology (incl. MEMS)", color: "#22b8e8" },
+  embedded:      { label: "Embedded, Power & Automation",              color: "#2fb350" },
+  research:      { label: "Research institution",                      color: "#3f74e8" },
+  university:    { label: "University / UAS",                          color: "#9450d8" },
+  cluster:       { label: "Cluster & association",                     color: "#3d5a80" }
 };
 
 window.COMPANIES = [

@@ -289,8 +289,8 @@ def main():
         f'<svg xmlns="http://www.w3.org/2000/svg" '
         f'xmlns:xlink="http://www.w3.org/1999/xlink" width="{W}" height="{H}" '
         f'viewBox="0 0 {W} {H}" font-family="Arial, Helvetica, sans-serif">',
-        f'<rect width="{W}" height="{H}" fill="#eef3f8"/>',
-        '<g id="bundeslaender" stroke="#9bb0c4" stroke-width="1" fill="#dfe8f1">',
+        f'<rect width="{W}" height="{H}" fill="#fbfaf6"/>',
+        '<g id="bundeslaender" stroke="#ffffff" stroke-width="1.6" fill="#e3ecf3">',
     ]
 
     # state areas
@@ -307,7 +307,7 @@ def main():
 
     # title
     parts.append(
-        f'<text x="40" y="50" font-size="32" font-weight="bold" fill="#1d3b57">'
+        f'<text x="40" y="50" font-size="32" font-weight="bold" fill="#14496e">'
         f'Microelectronics in Austria</text>')
     parts.append(
         f'<text x="40" y="76" font-size="16" fill="#456">'
@@ -366,8 +366,8 @@ def main():
     leg_h = 22 * n_rows + 36
     parts.append(f'<g id="category-legend" transform="translate(40,{H - leg_h - 40})">')
     parts.append(f'<rect x="-12" y="-20" width="{leg_col_w * 3 + 24}" height="{leg_h}" rx="8" '
-                 f'fill="#ffffff" fill-opacity="0.9" stroke="#9bb0c4"/>')
-    parts.append('<text x="0" y="0" font-size="14" font-weight="bold" fill="#1d3b57">Categories</text>')
+                 f'fill="#ffffff" fill-opacity="0.9" stroke="#d8e2ea"/>')
+    parts.append('<text x="0" y="0" font-size="14" font-weight="bold" fill="#14496e">Categories</text>')
     for i, (key, k) in enumerate(cat_items):
         col = i // n_rows
         r = i % n_rows
@@ -381,7 +381,7 @@ def main():
     # legend list on the right: cities (numbered) with companies – multi-column, without splitting a city
     parts.append(f'<g id="list">')
     parts.append(f'<text x="{PANEL_X}" y="128" font-size="17" font-weight="bold" '
-                 f'fill="#1d3b57">Locations (West → East)</text>')
+                 f'fill="#14496e">Locations (West → East)</text>')
     top, bottom = 152, H - 30
     col = 0
     yy = top
@@ -410,10 +410,10 @@ def main():
         n = number[city]
         st = group[0]["state"]
         parts.append(
-            f'<circle cx="{cx + 8}" cy="{yy - 4}" r="9" fill="#1d3b57"/>'
+            f'<circle cx="{cx + 8}" cy="{yy - 4}" r="9" fill="#14496e"/>'
             f'<text x="{cx + 8}" y="{yy - 0.5}" font-size="10" font-weight="bold" fill="#fff" '
             f'text-anchor="middle">{n}</text>'
-            f'<text x="{cx + 24}" y="{yy}" font-size="12.5" font-weight="bold" fill="#1d3b57">'
+            f'<text x="{cx + 24}" y="{yy}" font-size="12.5" font-weight="bold" fill="#14496e">'
             f'{esc(city)} <tspan font-weight="normal" fill="#789">({esc(st)})</tspan></text>')
         yy += 18
         for f in group:
